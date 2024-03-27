@@ -1,3 +1,5 @@
+import datetime
+
 class Auto:
     def __init__(self, marca, modelo, anio, kilometraje=0):
         self.marca=marca
@@ -28,15 +30,29 @@ class Auto:
             return "Ya estoy usado"
         else:
             return "Ya déjenme descansar, por favor"
-
+        
+    @classmethod
+    def auto_toyota(cls):
+        fecha_actual = datetime.datetime.now()
+        return cls(marca="Toyota", modelo="Safari", anio=fecha_actual.year, kilometraje=0)
     
-imprimir_auto=Auto("Kia","santos",2020)
-print(imprimir_auto.__dict__)
-imprimir_auto.actualizar_kilometraje(1000)
-print(f"\nEl nuevo kilometraje es: {imprimir_auto.kilometraje} km")
-imprimir_auto.realizar_viaje(100000)
-print(f"\nRealizando viaje a: {imprimir_auto.kilometraje} km")
-print(f"\nEl estado del auto es: {imprimir_auto.estado_auto()}")
+    @classmethod
+    def crear_auto(cls, marca, modelo, anio, kilometraje=0):
+        return cls(marca=marca,modelo=modelo, anio=anio, kilometraje=kilometraje)
+        
+    @staticmethod
+    def comparar_kilometraje(auto1,auto2):
+        if auto1.kilometraje==auto2.kilometraje:
+            return "Los autos tienen el mismo kilometraje"
+        return "Los autos no tienen el mismo kilometraje"    
+
+    @staticmethod
+    def comparar_anio(auto1, auto2):
+        return auto1.anio - auto2.anio
+    
+    def __str__(self):
+        return f"Marca: {self.marca}, Año: {self.anio}, Kilometraje: {self.kilometraje}"
+
 
     
         
