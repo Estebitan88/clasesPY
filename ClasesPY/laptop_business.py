@@ -3,10 +3,13 @@ import random
 from laptop import Laptop
 
 class Laptop_Business(Laptop):
-    def __init__(self, marca, procesador, memoria,antivirus,conectividad,costo=500, impuesto=10):
+    def __init__(self, marca, procesador, memoria,disco,conectividad,costo=500, impuesto=10):
         super().__init__(marca, procesador, memoria, costo, impuesto)
-        self.antivirus=antivirus
+        self.disco=disco
         self.conectividad=conectividad
+
+    def __str__(self):
+        return f"Laptop Business: \n Marca={self.marca}\n Procesador={self.procesador}\n Memoria={self.memoria}\n Disco={self.disco}\n Conectividad={self.conectividad}\n Costo={self.costo}\n Impuesto={self.impuesto}\n"
 
     def realizar_diagnostico_sistema(self):
         resultado_diagnostico=super().realizar_diagnostico_sistema()
